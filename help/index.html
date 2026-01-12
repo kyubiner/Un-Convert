@@ -12,14 +12,14 @@
     <meta property="og:description" content="unit converter yaitu unit panjang, berat/massa, waktu, dan suhu">
     <meta property="og:image" content="/img/og-img.png">
     <meta property="og:url" content="https://unit-converter-bice-xi.vercel.app/">
-    <meta property="og:type" content="website - https://unit-converter-bice-xi.vercel.app/">
+    <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Units converter" />
     <meta name="twitter:description" content="unit converter yang dibuat dengan html, css dan js vanilla" />
     <meta name="twitter:image" content="img/og-img.png" />
     <link rel="canonical" href="https://unit-converter-bice-xi.vercel.app/">
-    <title>Bantuan</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Help</title>
+    <link rel="stylesheet" href="/style/style.css" />
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
     <link rel="stylesheet" type="text/css"
@@ -28,73 +28,72 @@
 </head>
 
 <body>
-    <h2>FAQ</h2>
+    <h2 class="title title-help">FAQ</h2>
     <section class="main-faq">
         <section class="Faq">
             <section class="question">
-                <h4>1. Atas tujuan apa website ini dibuat?</h4>
+                <h5>1. For what purpose was this website created?</h5>
                 <i class="ph ph-arrow-fat-line-down"></i>
             </section>
             <section class="answer">
-                <p>Project kecil yang bermaksud sebagai latihan saya dalam pengaplikasian materi DOM dan JavaScript
-                    lainnya.</p>
+                <p>A small project that is intended as my practice in applying DOM and Javascript materials other</p>
             </section>
         </section>
         <section class="Faq">
             <section class="question">
-                <h4>2. Dengan bahasa pemrograman apa website ini dibuat?</h4>
+                <h5>2. What Programming language was this website created with?</h5>
                 <i class="ph ph-arrow-fat-line-down"></i>
             </section>
             <section class="answer">
-                <p>Website ini dibuat menggunakan HTML, CSS, dan JavaScript vanilla.</p>
+                <p>This website is built using vanilla HTML, CSS, and Javascript</p>
             </section>
         </section>
         <section class="Faq">
             <section class="question">
-                <h4>3. Bagaimana cara mengkonversi unit?</h4>
+                <h5>3. How to convert units?</h5>
                 <i class="ph ph-arrow-fat-line-down"></i>
             </section>
             <section class="answer">
-                <p>Masukkan angka, pilih satuan asal dan satuan tujuan, lalu klik tombol "Convert".</p>
+                <p>Enter the number, select the source and destination units, then click the "convert" button.</p>
             </section>
         </section>
         <section class="Faq">
             <section class="question">
-                <h4>4. Mengapa ada beberapa konversi yang unitnya sedikit?</h4>
+                <h5>4. Why are there some conversions that have few units?</h5>
                 <i class="ph ph-arrow-fat-line-down"></i>
             </section>
             <section class="answer">
-                <p>karena sulit untuk mengimplementasikan unit lainya, namun bisa saja diupdate berkala nantinya.</p>
+                <p>Because it is difficult to implement other units, but it can be updated periodically later</p>
             </section>
         </section>
         <section class="Faq">
             <section class="question">
-                <h4>5. Apakah ada konversi unit baru kedepannya?</h4>
+                <h5>5. Are there any new unit conversions in the future?</h5>
                 <i class="ph ph-arrow-fat-line-down"></i>
             </section>
             <section class="answer">
-                <p>Ya, jika website ini ramai dikunjungi, ataupun saya yang sedang gabut.</p>
+                <p>Yes, if this website is visited by many people :D</p>
             </section>
         </section>
     </section>
-    <main class="form-border">
+    <section class="form-border category" style="width: 80%;">
         <form id="myform" name="Contact-form" autocomplete="on">
-            <h2 style="text-align: center">Contact Form</h2>
+            <h2 class="title-help" style="text-align: center">Contact Form</h2>
             <p id="status-msg"></p>
             <section class="form">
-                <label for="nama">Nama :</label>
-                <input id="nama" class="input" type="text" placeholder="Nama anda..." name="nama" required />
+                <label for="nama">Name</label><br>
+                <input id="nama" class="input" type="text" placeholder="Full name..." name="nama" required />
                 <br />
-                <label for="email">Email :</label>
-                <input id="email" class="input" type="email" placeholder="Email anda..." name="email" required />
+                <label for="email">Email</label><br>
+                <input id="email" class="input" type="email" placeholder="Account@mail.com" name="email" required />
                 <br />
-                <label for="pesan" style="vertical-align: top">Pesan :</label>
-                <textarea id="pesan" class="input" name="pesan" placeholder="Pesan anda..." rows="8" cols="27"
+                <label for="pesan" style="vertical-align: top">Message</label><br>
+                <textarea id="pesan" class="input" name="pesan" placeholder="Your message..." rows="8" cols="27"
                     style="resize: none" required></textarea>
-                <button id="button-submit" type="submit">Kirim</button>
+                <button id="button-submit" type="submit">Send</button>
             </section>
         </form>
-    </main>
+    </section>
     <script src="/help/script.js"></script>
 </body>
 

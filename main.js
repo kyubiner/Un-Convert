@@ -56,7 +56,7 @@ class unitConverter {
             },
             time: {
                 hour: 3600,
-                minute: 60,
+                minute: 60, 
                 second: 1,
             },
             temperature: {},
@@ -65,7 +65,7 @@ class unitConverter {
     }
 
     #getCategory(fromUnit) {
-        if (this.tempUnits.includes(fromUnit)) return "temperature"; // Cek manual untuk suhu
+        if (this.tempUnits.includes(fromUnit)) return "temperature";
         return Object.keys(this.unit).find(cat => fromUnit in this.unit[cat]) || null;
     }
 
@@ -77,10 +77,10 @@ class unitConverter {
 
         if (category === "temperature") {
             if (fromUnit === "Celsius" && toUnit === "Fahrenheit") {
-                return (value * 9/5) + 32;
+                return (value * 9 / 5) + 32;
             }
             if (fromUnit === "Fahrenheit" && toUnit === "Celsius") {
-                return (value - 32) * 5/9;
+                return (value - 32) * 5 / 9;
             }
             if (fromUnit === "Celsius" && toUnit === "Kelvin") {
                 return value + 273.15;
@@ -89,24 +89,20 @@ class unitConverter {
                 return value - 273.15;
             }
             if (fromUnit === "Kelvin" && toUnit === "Fahrenheit") {
-                return (value - 273.15) * 9/5 + 32;
+                return (value - 273.15) * 9 / 5 + 32;
             } if (formUnit === "Fahrenheit" && toUnit === "Kelvin") {
-                return (value - 32) * 5/9 + 273.15
+                return (value - 32) * 5 / 9 + 273.15
             }
             throw new Error("Konversi suhu tidak valid");
         }
-    
-        // Cek apakah toUnit ada dalam kategori yang sama
+
         if (!(toUnit in this.unit[category])) {
             throw new Error("Satuan tujuan tidak valid dalam kategori ini");
         }
-    
+
         return (value * this.unit[category][fromUnit]) / this.unit[category][toUnit];
     }
-    
 }
-
-const converter = new unitConverter();
 
 document.addEventListener("click", (e) => {
     if (e.target.classList.contains("category-btn")) {
@@ -115,10 +111,37 @@ document.addEventListener("click", (e) => {
     }
 });
 
+function syncOptions(changed, target) {
+    const value = changed.value;
+
+    Array.from(target.options).forEach(opt => {
+        opt.disabled = false;
+    });
+
+    Array.from(target.options).forEach(opt => {
+        if (opt.value === value) {
+            opt.disabled = true;
+        }
+    });
+
+    if (target.value === value) {
+        target.selectedIndex = 0;
+    }
+}
+
+formUnit.addEventListener("change", () => syncOptions(formUnit, toUnit));
+toUnit.addEventListener("change", () => syncOptions(toUnit, formUnit));
+
+syncOptions(formUnit, toUnit);
+
+
 function updateUnitOptions(category) {
     const unitSelects = [formUnit, toUnit];
-    console.log("mengubah unit ke => ", category);
+    console.log("Turn unit to => ", category);
     unitSelects.forEach((select) => {
+        if (unitSelects.toUnit) {
+            select.innerHTML = converterProperty[category].map((unit) => `<option value="${unit}">${unit}</option>`).join(" ");
+        }
         select.innerHTML = converterProperty[category].map((unit) => `<option value="${unit}">${unit}</option>`).join(" ");
     });
 }
@@ -130,9 +153,9 @@ buttonI.addEventListener("click", (event) => {
     const toUnit = document.getElementById("to-unit").value;
     const hasil = converter.convert(value, formUnit, toUnit);
     if (hasil < 0) {
-        return (output.innerHTML = `Hasil: ${hasil} ${toUnit}`);
+        return (output.innerHTML = `Result: ${hasil} ${toUnit}`);
     }
-    return (output.innerHTML = `Hasil: ${hasil.toLocaleString(
+    return (output.innerHTML = `Result: ${hasil.toLocaleString(
         "id-ID"
     )} ${toUnit}`);
 });
@@ -140,34 +163,31 @@ buttonI.addEventListener("click", (event) => {
 const bubble = document.querySelector(".chat-bubble");
 const maskot = document.querySelector(".assistant-img");
 const textBubble = [
-    "Halo butuh bantuan konversi?👾",
-    "Masukkan angka & pilih satuan, lalu klik Convert!",
-    "[SYSTEM ONLINE] Konversi data siap!✅",
-    "Ingin tahu lebih banyak? Lihat halaman <span>bantuan!</span>",
-    "Panjang? Massa? Waktu? Aku bisa bantu!🔍",
-    "⚙️ Memproses… konversi dalam hitungan detik!",
-    "Aku bisa mengubah meter ke centimeter, kilogram ke gram, dan banyak lagi!🚀",
+    "Hello need help converting?👾",
+    "Enter the number & select the unit. then click Convert!",
+    "[SYSTEM ONLINE] Data conversion ready!✅",
+    "Want to know more? Check out the <span>Help page!</span>",
+    "⚙️ Processing... conversions in seconds!",
+    "Unit conversion with explanation of the formula in it!🚀",
 ]
 
 let hideTimeout;
 let lastTextIndex = -1;
 
 maskot.addEventListener("click", () => {
-    // Pastikan bubble reset agar tidak spam efek animasi
     bubble.classList.remove("show");
 
     setTimeout(() => {
         let newIndex;
         do {
             newIndex = Math.floor(Math.random() * textBubble.length);
-        } while (newIndex === lastTextIndex); // Ulangi jika sama dengan sebelumnya
-
-        lastTextIndex = newIndex; // Simpan teks terakhir yang ditampilkan
+        } while (newIndex === lastTextIndex);
+        lastTextIndex = newIndex;
         bubble.innerHTML = textBubble[newIndex];
 
-        if (bubble.textContent.includes("bantuan")) {
+        if (bubble.textContent.includes("Help page!")) {
             bubble.addEventListener("click", () => {
-                window.location.href = "help/bantuan.html";
+                window.location.href = "help";
             });
         }
 
@@ -175,7 +195,7 @@ maskot.addEventListener("click", () => {
         clearTimeout(hideTimeout);
 
         hideTimeout = setTimeout(() => {
-        bubble.classList.remove("show");
-    }, 5000);
-}, 300);
+            bubble.classList.remove("show");
+        }, 5000);
+    }, 300);
 });

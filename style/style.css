@@ -1,0 +1,443 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* VANILLA SECTION */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a2e;
+    color: #00ccff;
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+}
+
+input,
+select,
+textarea,
+button,
+output {
+    font-family: 'Press Start 2P', cursive;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid #00ccff;
+    background-color: #111;
+    color: #00ccff;
+    box-shadow: 2px 2px 0 #003366;
+    text-align: center;
+    border-radius: 3px;
+}
+
+textarea {
+    margin-bottom: 1rem;
+}
+
+button {
+    background-color: #004488;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0055aa;
+    transform: scale(1.05);
+}
+
+output {
+    display: block;
+    margin: 0.5rem 0;
+    width: 90%;
+}
+
+
+span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+label:first-child {
+    word-spacing: 17px;
+}
+
+h2 {
+    text-shadow: 3px 3px 0 #003366;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+fieldset {
+    border: none;
+}
+
+/* CLASS SECTION */
+.form-border {
+    margin: 2rem auto;
+}
+
+.main-convert {
+    margin: 0 30vw;
+}
+
+.form-design {
+    width: 70%;
+    text-shadow: none;
+}
+
+
+.assistant {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    bottom: 0.5px;
+    right: 20px;
+    opacity: 0.6;
+}
+
+.chat-bubble {
+    background: #222;
+    color: #00ccff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    padding: 8px 12px;
+    border: 3px solid #00ccff;
+    box-shadow: 3px 3px 0 #003366;
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 5.5rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    visibility: hidden;
+}
+
+.chat-bubble.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.chat-bubble::before {
+    content: "";
+    position: absolute;
+    right: -3.6px;
+    top: 80%;
+    width: 10px;
+    height: 6px;
+    background: #222;
+    border-top: 2px solid #00ccff;
+    border-right: 2px solid #00ccff;
+    box-shadow: 2px -2px 0 #003366;
+    transform: rotate(89deg) scale(1.5) skew(147deg);
+    -webkit-transform: rotate(90deg) scale(1.5) skew(147deg);
+    -moz-transform: rotate(89deg) scale(1.5) skew(147deg);
+    -ms-transform: rotate(89deg) scale(1.5) skew(147deg);
+    -o-transform: rotate(89deg) scale(1.5) skew(147deg);
+}
+
+.assistant-img {
+    width: 48px;
+    height: 48px;
+    image-rendering: pixelated;
+}
+
+.assistant-img:hover {
+    width: 50px;
+    height: 50px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 1rem;
+    width: 90%;
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    width: 100%;
+    padding: 10px;
+    background: #222;
+    border: 3px solid #00ccff;
+    box-shadow: 1px 1px 0 #003366;
+}
+
+.title {
+    font-size: 24px;
+    color: #00ccff;
+    text-shadow: 3px 3px 0 #003366;
+}
+
+.title-help {
+    margin-top: 2em;
+    margin-bottom: 1rem;
+}
+
+.Faq {
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    justify-content: center;
+    align-content: center;
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.answer {
+    font-size: 10px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out;
+    padding: 0 5px;
+}
+
+.answer.show {
+    max-height: 300px;
+    opacity: 1;
+    padding: 10px;
+}
+
+.ph-arrow-fat-line-down {
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.ph-arrow-fat-line-down.rotate {
+    transform: rotate(180deg);
+}
+
+.main-faq {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.option-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.type-convert {
+    width: 90%;
+}
+
+.invicible {
+    display: none;
+}
+
+/* RESPONSIF SECTION */
+@media screen and (max-width: 1024px) {
+    * {
+        font-size: small;
+    }
+
+    fieldset {
+        display: flex;
+        padding: 0;
+        margin: 0;
+    }
+
+    select {
+        padding: 5px;
+    }
+
+    fieldset select {
+        width: 80%;
+    }
+
+    .form {
+        width: 80%;
+    }
+
+    .title {
+        font-size: 17px;
+        margin-bottom: 0.5rem;
+    }
+
+    .title-help {
+        font-size: large;
+    }
+
+    .main-convert {
+        margin: 10vh 5vw;
+    }
+
+    .option-container {
+        grid-template-columns: auto auto;
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.text-container{
+    margin: 0 0 1em 0;
+    opacity: 1;
+    transform: translateY(0px);
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.brutalist-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #00ccff;
+    border-radius: 8px;
+    padding: 0;
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    position: relative;
+    box-shadow: 4px 4px 0px #000000;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    height: 130px;
+    width: 130px;
+    cursor: pointer;
+}
+
+.brutalist-button.openai {
+    background-color: #003366;
+}
+
+.brutalist-button::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -150%;
+    width: 300%;
+    height: 300%;
+    border-radius: 50%;
+    transform: translateX(-50%) scale(0);
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 1;
+}
+
+.brutalist-button.openai::before {
+    background-color: #0055aa;
+}
+
+.brutalist-button.claude::before {
+    background-color: #e3d19c;
+}
+
+.brutalist-button:hover::before {
+    transform: translateX(-50%) scale(1);
+}
+
+.brutalist-button:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 8px 8px 0px #000000;
+}
+
+.brutalist-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000000;
+}
+
+.openai-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100px;
+    height: 100px;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.openai-icon {
+    width: 54px;
+    height: 54px;
+    fill: #ffffff;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.brutalist-button:hover .openai-logo {
+    width: 70px;
+    height: 70px;
+    top: 35%;
+}
+
+.brutalist-button:hover .openai-icon {
+    transform: scale(0.6);
+}
+
+.button-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.3;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    z-index: 2;
+    position: absolute;
+    bottom: 18px;
+    left: 0;
+    right: 0;
+}
+
+.button-text span {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #ffffff;
+}
+
+.brutalist-button:hover .button-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.brutalist-button.openai:hover .button-text {
+    color: #d3d3d3;
+}
+
+.brutalist-button.openai:hover .button-text span:last-child {
+    color: #d6cbbf;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .brutalist-button:hover {
+        transform: translate(-4px, -4px);
+        box-shadow: 8px 8px 0px #000000;
+    }
+}

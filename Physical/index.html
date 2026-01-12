@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="img/rubuk.jpg" type="image/x-icon">
+    <meta name="description" content="unit converter yaitu unit panjang, berat/massa, waktu, dan suhu">
+    <meta name="keyword" content="unit converter, connection, rubiku, converter">
+    <meta name="author" content="Rubikuriku">
+    <meta property="og:tittle" content="Unit converter">
+    <meta property="og:description" content="unit converter yaitu unit panjang, berat/massa, waktu, dan suhu">
+    <meta property="og:image" content="/img/og-img.png">
+    <meta property="og:url" content="https://unit-converter-bice-xi.vercel.app/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Units converter" />
+    <meta name="twitter:description" content="unit converter yang dibuat dengan html, css dan js vanilla" />
+    <meta name="twitter:image" content="img/og-img.png" />
+    <link rel="canonical" href="https://unit-converter-bice-xi.vercel.app/">
+    <link rel="stylesheet" href="/style/style.css" />
+    <title>Units Converter</title>
+</head>
+
+<body>
+    <main class="main-convert">
+        <section class="category">
+            <h1 class="title">Unit Converter</h1>
+            <select name="typeConvert" id="type-convert" class="type-convert">
+                <option value="length">Length</option>
+                <option value="mass">Mass</option>
+                <option value="time">Time</option>
+                <option value="temperature">Temperature</option>
+            </select>
+        </section>
+        <form id="Converter" class="container">
+            <section class="category">
+                <input type="number" value="1" min="0" id="input" class="form-design" required />
+                <fieldset>
+                    <select name="from" id="from-unit">
+                        <option value="kilometer">kilometer</option>
+                        <option value="hektometer">hektometer</option>
+                        <option value="dekameter">dekameter</option>
+                        <option value="meter">meter</option>
+                        <option value="desimeter">desimeter</option>
+                        <option value="centimeter">centimeter</option>
+                        <option value="milimeter">milimeter</option>
+                    </select>
+                    <select name="to" id="to-unit">
+                        <option value="kilometer">kilometer</option>
+                        <option value="hektometer">hektometer</option>
+                        <option value="dekameter">dekameter</option>
+                        <option value="meter">meter</option>
+                        <option value="desimeter">desimeter</option>
+                        <option value="centimeter">centimeter</option>
+                        <option value="milimeter">milimeter</option>
+                    </select>
+                </fieldset>
+                <button id="buttonConvert">Convert</button>
+            </section>
+            <section class="category">
+                <output id="output">Result:</output>
+                <output id="explain"></output>
+            </section>
+        </form>
+        <aside class="assistant">
+            <div class="chat-bubble">Hello! need help converting?</div>
+            <img src="/img/rubuk.jpg" alt="Asisten Pixel" class="assistant-img">
+        </aside>
+    </main>
+    <script type="module" src="/script/data.js"></script>
+    <script type="module" src="/Physical/script.js"></script>
+</body>
+
+</html>
