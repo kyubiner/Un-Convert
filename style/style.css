@@ -46,6 +46,9 @@ output {
     display: block;
     margin: 0.5rem 0;
     width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 
@@ -241,8 +244,21 @@ fieldset {
     width: 90%;
 }
 
+.textArea_input {
+    width: 90%;
+    min-width: 90%;
+    max-width: 90%;
+    scrollbar-width: none;
+    overflow: hidden;
+    resize: none;
+}
+
 .invicible {
     display: none;
+}
+
+.clipboard {
+    padding: auto;
 }
 
 /* RESPONSIF SECTION */

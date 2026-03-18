@@ -12,10 +12,21 @@ export class unitConverter {
         if (fromUnit.factor) {
             const base = value * fromUnit.factor;
             return base / toUnit.factor;
+        } if (fromUnit.base) {
+            const base = fromUnit.fromBase(value);
+            return toUnit.toBase(base);
         }
 
-        const base = fromUnit.fromBase(value);
-        return toUnit.toBase(base);
+        if (from === "text") {
+            return value.split("").map(c => c.charCodeAt(0).toString(toUnit.idBase)).join(" ");
+        }
+
+        if (to === "text") {
+            return value.split(" ").map(c => String.fromCharCode(parseInt(c, fromUnit.idBase))).join("");
+        }
+
+        const base10 = parseInt(value, fromUnit.idBase);
+        return base10.toString(toUnit.idBase);
     }
 
     explain(from, to, value) {

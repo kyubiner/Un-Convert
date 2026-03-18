@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="img/rubuk.jpg" type="image/x-icon">
 
-    <title>Physical Converter</title>
+    <title>Number Converter</title>
 
     <meta name="description"
         content="Unit converter untuk mengubah satuan panjang, massa, waktu, dan suhu secara cepat.">
@@ -35,35 +35,30 @@
 <body>
     <main class="main-convert">
         <section class="category">
-            <h1 class="title">Physical Converter</h1>
+            <h1 class="title">Number Converter</h1>
             <select name="typeConvert" id="type-convert" class="type-convert">
-                <option value="length">Length</option>
-                <option value="mass">Mass</option>
-                <option value="time">Time</option>
-                <option value="temperature">Temperature</option>
+                <option value="binery">Binery</option>
+                <option value="data_decimal">Data (decimal)</option>
+                <option value="data_binery">Data (binery)</option>
             </select>
         </section>
         <form id="Converter" class="container">
             <section class="category">
-                <input type="number" value="1" min="0" id="input" class="form-design" required />
+                <input type="text" id="input" class="form-design" required />
                 <fieldset>
                     <select name="from" id="from-unit">
-                        <option value="kilometer">kilometer</option>
-                        <option value="hektometer">hektometer</option>
-                        <option value="dekameter">dekameter</option>
-                        <option value="meter">meter</option>
-                        <option value="desimeter">desimeter</option>
-                        <option value="centimeter">centimeter</option>
-                        <option value="milimeter">milimeter</option>
+                        <option value="biner">biner</option>
+                        <option value="octal">octal</option>
+                        <option value="decimal">decimal</option>
+                        <option value="hexadecimal">hexadecimal</option>
+                        <option value="text">text</option>
                     </select>
                     <select name="to" id="to-unit">
-                        <option value="kilometer">kilometer</option>
-                        <option value="hektometer">hektometer</option>
-                        <option value="dekameter">dekameter</option>
-                        <option value="meter">meter</option>
-                        <option value="desimeter">desimeter</option>
-                        <option value="centimeter">centimeter</option>
-                        <option value="milimeter">milimeter</option>
+                        <option value="biner">biner</option>
+                        <option value="octal">octal</option>
+                        <option value="decimal">decimal</option>
+                        <option value="hexadecimal">hexadecimal</option>
+                        <option value="text">text</option>
                     </select>
                 </fieldset>
                 <button id="buttonConvert">Convert</button>
@@ -98,7 +93,7 @@
         </aside> -->
     </main>
     <script type="module" src="/script/data.js"></script>
-    <script type="module" src="/Physical/script.js"></script>
+    <script type="module" src="/Number/script.js"></script>
 </body>
 
 </html>

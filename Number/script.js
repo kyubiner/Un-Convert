@@ -8,126 +8,89 @@ const fromUnit = document.getElementById("from-unit");
 const toUnit = document.getElementById("to-unit");
 const outputExplain = document.getElementById("explain");
 
-const length = new unitConverter({
-    name: "length",
+const binery = new unitConverter({
+    name: "binery",
     units: [
-        { id: 1, label: "kilometer", factor: 1000 },
-        { id: 2, label: "hektometer", factor: 100 },
-        { id: 3, label: "dekameter", factor: 10 },
-        { id: 4, label: "meter", factor: 1 },
-        { id: 5, label: "desimeter", factor: 0.1 },
-        { id: 6, label: "centimeter", factor: 0.01 },
-        { id: 7, label: "milimeter", factor: 0.001 },
+        { idBase: 2, label: "biner" },
+        { idBase: 8, label: "octal" },
+        { idBase: 10, label: "decimal" },
+        { idBase: 16, label: "hexadecimal" },
+        { label: "text" },
     ],
-    explaination: function (from, to, value) {
-        const fromUnit = this.units.find(u => u.label == from);
-        const toUnit = this.units.find(u => u.label == to);
-        const operation = fromUnit.factor / toUnit.factor;
-        if (fromUnit.id < toUnit.id) {
-            return `${value} multiplied by ${operation}`;
-        } else if (fromUnit.id > toUnit.id) {
-            return `${value} divided by ${Math.ceil(1 / operation)}`;
-        }
-        return `${value} remains the same`;
-    }
-});
 
-const mass = new unitConverter({
-    name: "mass",
-    units: [
-        { id: 1, label: "kilogram", factor: 1000 },
-        { id: 2, label: "hektogram", factor: 100 },
-        { id: 3, label: "dekagram", factor: 10 },
-        { id: 4, label: "meter", factor: 1 },
-        { id: 5, label: "desigram", factor: 0.1 },
-        { id: 6, label: "centigram", factor: 0.01 },
-        { id: 7, label: "miligram", factor: 0.001 },
-    ],
-    explaination: function (from, to, value) {
-        const fromUnit = this.units.find(u => u.label == from);
-        const toUnit = this.units.find(u => u.label == to);
-        const operation = fromUnit.factor / toUnit.factor;
-        if (fromUnit.id < toUnit.id) {
-            return `${value} multiplied by ${operation}`;
-        } else if (fromUnit.id > toUnit.id) {
-            return `${value} divided by ${Math.ceil(1 / operation)}`;
-        }
-        return `${value} remains the same`;
-    }
-});
-
-const time = new unitConverter({
-    name: "time",
-    units: [
-        { id: 1, label: "hour", factor: 3600 },
-        { id: 2, label: "minute", factor: 60 },
-        { id: 3, label: "second", factor: 1 },
-    ],
-    explaination: function (from, to, value) {
-        const fromUnit = this.units.find(u => u.label == from);
-        const toUnit = this.units.find(u => u.label == to);
-        const operation = fromUnit.factor / toUnit.factor;
-        if (fromUnit.id < toUnit.id) {
-            return `${value} multiplied by ${operation}`;
-        } else if (fromUnit.id > toUnit.id) {
-            return `${value} divided by ${Math.ceil(1 / operation)}`;
-        }
-        return `${value} remains the same`;
-    }
-});
-
-const temperature = new unitConverter({
-    name: "temperature",
-    units: [
-        {
-            base: "F",
-            label: "Fahrenheit",
-            fromBase: v => (v - 32) * 5 / 9,
-            toBase: v => (v * 9 / 5) + 32,
-            fromBaseExplain: "x * 9 / 5 + 32",
-            toBaseExplain: "(x - 32) * 5 / 9",
-        },
-        {
-            base: "K",
-            label: "Kelvin",
-            fromBase: v => v - 273.15,
-            toBase: v => v + 273.15,
-            fromBaseExplain: "- 273.15°K",
-            toBaseExplain: "273.15°K",
-        },
-        {
-            base: "C",
-            label: "Celcius",
-            fromBase: v => v,
-            toBase: v => v,
-            fromBaseExplain: `1°C`,
-            toBaseExplain: `1°C`,
-        },
-    ],
     explaination: function (from, to) {
         const fromUnit = this.units.find(u => u.label == from);
         const toUnit = this.units.find(u => u.label == to);
         if (fromUnit.label == toUnit.label) {
             return `Same type`;
-        } else if (fromUnit.label == "Fahrenheit") {
-            return `(${toUnit.toBaseExplain} - 32) * 5 / 9`;
-        } else if (toUnit.label == "Fahrenheit") {
-            return `(${fromUnit.fromBaseExplain} * 9 / 5) + 32`;
         } else {
-            return `${fromUnit.fromBaseExplain} + ${toUnit.toBaseExplain}`;
+            return `${fromUnit.label} -> ${toUnit.label}`;
         }
     }
 });
 
+const data_decimal = new unitConverter({
+    name: "data_decimal",
+    units: [
+        { id: 1, label: "bit", factor: 1 },
+        { id: 2, label: "kilobit", factor: 1000 },
+        { id: 3, label: "megabit", factor: 1000 ** 2 },
+        { id: 4, label: "terabit", factor: 1000 ** 3 },
+        { id: 5, label: "petabit", factor: 1000 ** 4 },
+        { id: 6, label: "byte", factor: 8 },
+        { id: 7, label: "kilobyte", factor: 8000 },
+        { id: 8, label: "megabyte", factor: 8000 ** 2 },
+        { id: 9, label: "terabyte", factor: 8000 ** 3 },
+        { id: 10, label: "petabyte", factor: 8000 ** 4 },
+    ],
+    explaination: function (from, to, value) {
+        const fromUnit = this.units.find(u => u.label == from);
+        const toUnit = this.units.find(u => u.label == to);
+        const operation = fromUnit.factor / toUnit.factor;
+        if (fromUnit.id > toUnit.id) {
+            return `${value} multiplied by ${operation}`;
+        } else if (fromUnit.id < toUnit.id) {
+            return `${value} divided by ${Math.ceil(1 / operation)}`;
+        }
+        return `${value} remains the same`;
+    }
+});
+
+const data_binery = new unitConverter({
+    name: "data_binery",
+    units: [
+        { id: 1, label: "bit", factor: 1 },
+        { id: 2, label: "kilobit", factor: 1024 },
+        { id: 3, label: "megabit", factor: 1024 ** 2 },
+        { id: 4, label: "terabit", factor: 1024 ** 3 },
+        { id: 5, label: "petabit", factor: 1024 ** 4 },
+        { id: 6, label: "byte", factor: 8 },
+        { id: 7, label: "kilobyte", factor: 8 * 1024 },
+        { id: 8, label: "megabyte", factor: 8 * 1024 ** 2 },
+        { id: 9, label: "terabyte", factor: 8 * 1024 ** 3 },
+        { id: 10, label: "petabyte", factor: 8 * 1024 ** 4 },
+    ],
+    explaination: function (from, to, value) {
+        const fromUnit = this.units.find(u => u.label == from);
+        const toUnit = this.units.find(u => u.label == to);
+        const operation = fromUnit.factor / toUnit.factor;
+        if (fromUnit.id < toUnit.id) {
+            return `${value} multiplied by ${operation}`;
+        } else if (fromUnit.id > toUnit.id) {
+            return `${value} divided by ${Math.ceil(1 / operation)}`;
+        }
+        return `${value} remains the same`;
+    }
+});
+
 const converterProperty = {
-    length,
-    mass,
-    time,
-    temperature,
+    binery,
+    data_decimal,
+    data_binery,
 }
 
 const converterUi = new unitConverterUI(converterProperty);
-let activeConverter = length
+let activeConverter = binery
 outputExplain.classList.add("invicible");
 
 typeConvert.addEventListener("change", (e) => {
@@ -145,19 +108,14 @@ function updateUnitOptions(category) {
 
 buttonConvert.addEventListener("click", (e) => {
     e.preventDefault();
-    const value = Number(Inputvalue.value);
+    const value = Inputvalue.value;
     const from = fromUnit.value;
     const to = toUnit.value;
+    console.log(from);
     const result = activeConverter.convert(value, from, to);
     outputExplain.classList.remove("invicible");
     outputExplain.innerHTML = activeConverter.explain(from, to, value);
-    if (result > 100000) {
-        return outputResult.innerHTML =
-            `Result: ${result.toLocaleString("en-US", { notation: "scientific", maximumFractionDigits: 2 })} ${to}`;
-    } else if (result < 0) {
-        `Result: ${result.toLocaleString("en-US", { notation: "standard" })} ${to}`;
-    }
-    return (outputResult.innerHTML = `${result.toLocaleString("en-US", { notation: "standard" })} ${to} 
+    return (outputResult.innerHTML = `${result} 
     <button class="clipboard">
         <svg fill="#00ccff" width="20px" height="20px" viewBox="0 0 32.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="list-1" enable-background="new 0 0 32 32" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect x="9" y="14" width="2" height="2"></rect> <rect x="13" y="18" width="10" height="2"></rect> <rect x="9" y="18" width="2" height="2"></rect> <rect x="13" y="22" width="10" height="2"></rect> <rect x="9" y="22" width="2" height="2"></rect> <rect x="13" y="14" width="10" height="2"></rect> <path d="M23 6V4h-6V2h-2v2H9v2H4v24h24V6H23zM11 6h10v2H11V6zM26 28H6V8h3v2h14V8h3V28z"></path> </g></svg>
     </button>`);

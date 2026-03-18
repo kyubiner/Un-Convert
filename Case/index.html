@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="img/rubuk.jpg" type="image/x-icon">
 
-    <title>Physical Converter</title>
+    <title>Text Converter</title>
 
     <meta name="description"
         content="Unit converter untuk mengubah satuan panjang, massa, waktu, dan suhu secara cepat.">
@@ -35,37 +35,20 @@
 <body>
     <main class="main-convert">
         <section class="category">
-            <h1 class="title">Physical Converter</h1>
-            <select name="typeConvert" id="type-convert" class="type-convert">
-                <option value="length">Length</option>
-                <option value="mass">Mass</option>
-                <option value="time">Time</option>
-                <option value="temperature">Temperature</option>
+            <h1 class="title">Case Converter</h1>
+            <select name="typeConvert" id="type_convert" class="type-convert">
+                <option value="sentence">Sentence case</option>
+                <option value="lower">lower case</option>
+                <option value="upper">UPPER CASE</option>
+                <option value="capitalized">Capitalized Case</option>
+                <option value="camel">camelCase</option>
+                <option value="snake">snake_case</option>
+                <option value="kebab">kebab-case</option>
             </select>
         </section>
         <form id="Converter" class="container">
             <section class="category">
-                <input type="number" value="1" min="0" id="input" class="form-design" required />
-                <fieldset>
-                    <select name="from" id="from-unit">
-                        <option value="kilometer">kilometer</option>
-                        <option value="hektometer">hektometer</option>
-                        <option value="dekameter">dekameter</option>
-                        <option value="meter">meter</option>
-                        <option value="desimeter">desimeter</option>
-                        <option value="centimeter">centimeter</option>
-                        <option value="milimeter">milimeter</option>
-                    </select>
-                    <select name="to" id="to-unit">
-                        <option value="kilometer">kilometer</option>
-                        <option value="hektometer">hektometer</option>
-                        <option value="dekameter">dekameter</option>
-                        <option value="meter">meter</option>
-                        <option value="desimeter">desimeter</option>
-                        <option value="centimeter">centimeter</option>
-                        <option value="milimeter">milimeter</option>
-                    </select>
-                </fieldset>
+                <textarea name="input" id="input" class="textArea_input" required></textarea>
                 <button id="buttonConvert">Convert</button>
             </section>
             <section class="category">
@@ -89,16 +72,20 @@
                         </svg>
                     </button>
                 </output>
-                <output id="explain"></output>
             </section>
         </form>
+
         <!-- <aside class="assistant">
             <div class="chat-bubble">Hello! need help converting?</div>
             <img src="/img/rubuk.jpg" alt="Asisten Pixel" class="assistant-img">
         </aside> -->
+
     </main>
     <script type="module" src="/script/data.js"></script>
-    <script type="module" src="/Physical/script.js"></script>
+    <script type="module" src="script.js"></script>
+    <script>
+
+    </script>
 </body>
 
 </html>
