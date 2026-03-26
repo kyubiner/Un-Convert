@@ -265,6 +265,11 @@ fieldset {
     padding: auto;
 }
 
+.desc_text {
+    margin: 0 10%;
+    text-align: justify;
+}
+
 footer{
     margin-top: 3rem;
 }

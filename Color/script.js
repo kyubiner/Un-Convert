@@ -200,6 +200,8 @@ outputResult.addEventListener("click", (e) => {
     navigator.clipboard.writeText(outputResult.innerText);
 });
 
+const regex_hex = /^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/;
+
 buttonConvert.addEventListener("click", (e) => {
     e.preventDefault();
     const input = Inputvalue.value;
@@ -214,10 +216,41 @@ buttonConvert.addEventListener("click", (e) => {
         g: inputG,
         b: inputB
     };
+
+    if (from === "hex" && !regex_hex.test(value.hex)) {
+        alert("invalid code hex!");
+        return;
+    }
+
+    if (from === "rgb") {
+        if (!inRange(value.r, 0, 255) || !inRange(value.g, 0, 255) || !inRange(value.b, 0, 255)) {
+            alert("RGB must be 0 - 255!");
+            return;
+        }
+    }
+
+    if (from === "hsl") {
+        if (!inRange(value.r, 0, 360) || !inRange(value.g, 0, 100) || !inRange(value.b, 0, 100)) {
+            alert("HSL invalid!");
+            return;
+        }
+    }
+
+    if (from === "hsv") {
+        if (!inRange(value.r, 0, 360) || !inRange(value.g, 0, 100) || !inRange(value.b, 0, 100)) {
+            alert("HSV invalid!");
+            return;
+        }
+    }
+
     const result = convert(value, from, to);
-    
+
     return (outputResult.innerHTML = `${result}
     <button class="clipboard">
         <svg fill="#00ccff" width="20px" height="20px" viewBox="0 0 32.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="list-1" enable-background="new 0 0 32 32" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect x="9" y="14" width="2" height="2"></rect> <rect x="13" y="18" width="10" height="2"></rect> <rect x="9" y="18" width="2" height="2"></rect> <rect x="13" y="22" width="10" height="2"></rect> <rect x="9" y="22" width="2" height="2"></rect> <rect x="13" y="14" width="10" height="2"></rect> <path d="M23 6V4h-6V2h-2v2H9v2H4v24h24V6H23zM11 6h10v2H11V6zM26 28H6V8h3v2h14V8h3V28z"></path> </g></svg>
     </button>`);
 });
+
+function inRange(n, min, max) {
+    return Number.isFinite(n) && n >= min && n <= max;
+}

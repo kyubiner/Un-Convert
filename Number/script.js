@@ -111,11 +111,27 @@ function updateUnitOptions(category) {
     toUnit.innerHTML = converterUi.generateOption(category);
 };
 
+const regex_biner= /^[01]+$/;
+const regex = /^[0-9]+$/;
+const regex_hex = /^[0-9a-zA-Z]+$/;
+
 buttonConvert.addEventListener("click", (e) => {
     e.preventDefault();
     const value = Inputvalue.value;
     const from = fromUnit.value;
     const to = toUnit.value;
+    if (from === "biner" && !regex_biner.test(value)) {
+        alert("value must 0 or 1!");
+        return;
+    }
+    if(from !== "text" && from !== "hexadecimal" && !regex.test(value)) {
+        alert("invalid value!");
+        return;
+    }
+    if(from === "hexadecimal" && !regex_hex.test(value)) {
+        alert("invalid value!");
+        return;
+    }
     const result = activeConverter.convert(value, from, to);
     outputExplain.classList.remove("invicible");
     outputExplain.innerHTML = activeConverter.explain(from, to, value);
