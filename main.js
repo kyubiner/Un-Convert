@@ -30,7 +30,7 @@ const faqs = document.querySelectorAll(".Faq");
 faqs.forEach((faq) => {
     const question = faq.querySelector(".question");
     const answer = faq.querySelector(".answer");
-    const icon = faq.querySelector(".ph-arrow-fat-line-down"); // Pastikan mengambil ikon panah di dalam FAQ
+    const icon = faq.querySelector(".ph-arrow-fat-line-down");
 
     question.addEventListener("click", () => {
         answer.classList.toggle("show");
@@ -42,7 +42,7 @@ faqs.forEach((faq) => {
 });
 
 const statusMsg = document.getElementById("status-msg");
-const scriptURL = 'https://script.google.com/macros/s/AKfycbz-uDSlszWlWgJBU0PqV5qWueqEPzJTTiHy5USOrNfzCtCN3eXLf6FUaLkx2uJ6M27F/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzjzQx73ufkc6DJ6lJpJIA-c5vgfMrhWDf42HQkbb_9F1zLInNWhGTFvfGgY2Kx1w63/exec'
 const form = document.forms['Contact-form'];
 const buttonSubmit = document.getElementById("button-submit");
 
