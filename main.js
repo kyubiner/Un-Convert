@@ -43,7 +43,7 @@ faqs.forEach((faq) => {
 
 const statusMsg = document.getElementById("status-msg");
 const scriptURL = 'https://script.google.com/macros/s/AKfycbzjzQx73ufkc6DJ6lJpJIA-c5vgfMrhWDf42HQkbb_9F1zLInNWhGTFvfGgY2Kx1w63/exec'
-const form = document.forms['Contact-form'];
+const formexcel = document.forms['Form-contact-converter'];
 const buttonSubmit = document.getElementById("button-submit");
 
 function validateUserName(username) {
@@ -60,7 +60,7 @@ function validateForm() {
     let email = document.getElementById("email").value.trim();
     if (!validateUserName(username)) {
         statusMsg.style.display = "block";
-        statusMsg.textContent = "username not valid";
+        statusMsg.textContent = "name not valid";
         statusMsg.style.color = "red";
         setTimeout(() => {
             statusMsg.style.display = "none";
@@ -79,12 +79,12 @@ function validateForm() {
     return true
 }
 
-form.addEventListener('submit', e => {
+formexcel.addEventListener('submit', e => {
     e.preventDefault();
     if (!validateForm()) return;
 
     statusMsg.style.display = "block";
-    statusMsg.textContent = "Sedang dikirim...";
+    statusMsg.textContent = "being sent...";
     statusMsg.style.color = "#00ccff";
     buttonSubmit.disabled = true;
 
@@ -92,12 +92,12 @@ form.addEventListener('submit', e => {
     fetch(scriptURL, {
         method: 'POST',
         mode: 'no-cors',
-        body: new FormData(form)
+        body: new FormData(formexcel)
     })
         .then(() => {
             statusMsg.textContent = "message success to send";
             statusMsg.style.color = "green";
-            form.reset();
+            formexcel.reset();
         })
         .catch(error => {
             statusMsg.textContent = "message fail to send";
@@ -108,7 +108,7 @@ form.addEventListener('submit', e => {
             buttonSubmit.disabled = false;
             setTimeout(() => {
                 statusMsg.style.display = "none";
-                form.reset();
+                formexcel.reset();
             }, 5000);
         })
 })
