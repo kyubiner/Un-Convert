@@ -42,7 +42,7 @@ faqs.forEach((faq) => {
 });
 
 const statusMsg = document.getElementById("status-msg");
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzjzQx73ufkc6DJ6lJpJIA-c5vgfMrhWDf42HQkbb_9F1zLInNWhGTFvfGgY2Kx1w63/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyO38yYFqosEMluimn6XmsUKLc0VQfef1OHNbbDtOgqQEoJ47_B5Gssig2ClGOBTgaG/exec'
 const formexcel = document.forms['Form-contact-converter'];
 const buttonSubmit = document.getElementById("button-submit");
 
@@ -93,21 +93,22 @@ formexcel.addEventListener('submit', e => {
         method: 'POST',
         body: new FormData(formexcel)
     })
-        .then(() => {
+        .then((response) => {
+            console.log('Success!', response);
             statusMsg.textContent = "message success to send";
             statusMsg.style.color = "green";
             formexcel.reset();
         })
         .catch(error => {
+            console.error('Error!', error.message);
             statusMsg.textContent = "message fail to send";
             statusMsg.style.color = "red";
-            console.error('Error!', error.message);
         })
         .finally(() => {
             buttonSubmit.disabled = false;
             setTimeout(() => {
                 statusMsg.style.display = "none";
-                formexcel.reset();
+                // formexcel.reset();
             }, 5000);
         })
 })
