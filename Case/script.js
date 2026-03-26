@@ -16,8 +16,9 @@ buttonConvert.addEventListener("click", (e) => {
     </button>`;
 });
 
-output.addEventListener("click", () => {
-    navigator.clipboard.writeText(output.innerHTML)
+outputResult.addEventListener("click", (e) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(outputResult.innerText);
 });
 
 function convertCase(type, text) {

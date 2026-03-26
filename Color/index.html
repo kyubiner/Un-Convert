@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon">
 
-    <title>Text Converter</title>
+    <title>Color Converter</title>
 
     <meta name="description"
         content="Universal converter applications such as physical units, number systems, colors and others">
@@ -34,25 +34,37 @@
     <link rel="canonical" href="https://unit-converter-bice-xi.vercel.app/">
     <link rel="stylesheet" href="/style/style.css">
 </head>
-</head>
 
 <body>
     <main class="main-convert">
-        <section class="category">
-            <h1 class="title">Case Converter</h1>
-            <select name="typeConvert" id="type_convert" class="type-convert">
-                <option value="sentence">Sentence case</option>
-                <option value="lower">lower case</option>
-                <option value="upper">UPPER CASE</option>
-                <option value="capitalized">Capitalized Case</option>
-                <option value="camel">camelCase</option>
-                <option value="snake">snake_case</option>
-                <option value="kebab">kebab-case</option>
-            </select>
-        </section>
         <form id="Converter" class="container">
             <section class="category">
-                <textarea name="input" id="input" class="textArea_input" required></textarea>
+                <h1 class="title">Color Converter</h1>
+                <input type="text" id="input" class="form-design" value="#" placeholder="#ffffff" pattern="^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$" required />
+                <div class="invicible" id="rgb-input">
+                    <input type="number" id="input1" class="form-design noscroll" min="1" max="360" placeholder="255"
+                        required onwheel="return false;" />
+                    <input type="number" id="input2" class="form-design noscroll" min="1" max="360" placeholder="255"
+                        required onwheel="return false;" />
+                    <input type="number" id="input3" class="form-design noscroll" min="1" max="360" placeholder="255"
+                        required onwheel="return false;" />
+                </div>
+                <fieldset>
+                    <select name="from" id="from-unit">
+                        <option value="hex">Hex</option>
+                        <option value="rgb">RGB</option>
+                        <option value="hsl">HSL</option>
+                        <option value="hsv">HSV</option>
+                        <!-- <option value="cmyk">CMYK</option> -->
+                    </select>
+                    <select name="to" id="to-unit">
+                        <option value="hex">Hex</option>
+                        <option value="rgb">RGB</option>
+                        <option value="hsl">HSL</option>
+                        <option value="hsv">HSV</option>
+                        <!-- <option value="cmyk">CMYK</option> -->
+                    </select>
+                </fieldset>
                 <button id="buttonConvert">Convert</button>
             </section>
             <section class="category">
@@ -79,11 +91,7 @@
             </section>
         </form>
     </main>
-    <script type="module" src="/script/data.js"></script>
-    <script type="module" src="script.js"></script>
-    <script>
-
-    </script>
+    <script type="module" src="/Color/script.js"></script>
 </body>
 
 </html>

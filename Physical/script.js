@@ -8,6 +8,11 @@ const fromUnit = document.getElementById("from-unit");
 const toUnit = document.getElementById("to-unit");
 const outputExplain = document.getElementById("explain");
 
+outputResult.addEventListener("click", (e) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(outputResult.innerText);
+});
+
 const length = new unitConverter({
     name: "length",
     units: [
@@ -153,9 +158,16 @@ buttonConvert.addEventListener("click", (e) => {
     outputExplain.innerHTML = activeConverter.explain(from, to, value);
     if (result > 100000) {
         return outputResult.innerHTML =
-            `Result: ${result.toLocaleString("en-US", { notation: "scientific", maximumFractionDigits: 2 })} ${to}`;
-    } else if (result < 0) {
-        `Result: ${result.toLocaleString("en-US", { notation: "standard" })} ${to}`;
+            `${result.toLocaleString("en-US", { notation: "scientific", maximumFractionDigits: 2 })} ${to}     
+            <button class="clipboard">
+                <svg fill="#00ccff" width="20px" height="20px" viewBox="0 0 32.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="list-1" enable-background="new 0 0 32 32" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect x="9" y="14" width="2" height="2"></rect> <rect x="13" y="18" width="10" height="2"></rect> <rect x="9" y="18" width="2" height="2"></rect> <rect x="13" y="22" width="10" height="2"></rect> <rect x="9" y="22" width="2" height="2"></rect> <rect x="13" y="14" width="10" height="2"></rect> <path d="M23 6V4h-6V2h-2v2H9v2H4v24h24V6H23zM11 6h10v2H11V6zM26 28H6V8h3v2h14V8h3V28z"></path> </g></svg>
+            </button>`;
+    } else if (result < 0) { 
+        return outputResult.innerHTML =
+            `${result.toLocaleString("en-US", { notation: "standard" })} ${to}
+            <button class="clipboard">
+                <svg fill="#00ccff" width="20px" height="20px" viewBox="0 0 32.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="list-1" enable-background="new 0 0 32 32" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect x="9" y="14" width="2" height="2"></rect> <rect x="13" y="18" width="10" height="2"></rect> <rect x="9" y="18" width="2" height="2"></rect> <rect x="13" y="22" width="10" height="2"></rect> <rect x="9" y="22" width="2" height="2"></rect> <rect x="13" y="14" width="10" height="2"></rect> <path d="M23 6V4h-6V2h-2v2H9v2H4v24h24V6H23zM11 6h10v2H11V6zM26 28H6V8h3v2h14V8h3V28z"></path> </g></svg>
+            </button>`;
     }
     return (outputResult.innerHTML = `${result.toLocaleString("en-US", { notation: "standard" })} ${to} 
     <button class="clipboard">

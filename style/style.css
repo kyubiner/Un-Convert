@@ -257,8 +257,16 @@ fieldset {
     display: none;
 }
 
+.input_flex {
+    display: flex;
+}
+
 .clipboard {
     padding: auto;
+}
+
+footer{
+    margin-top: 3rem;
 }
 
 /* RESPONSIF SECTION */
@@ -297,9 +305,15 @@ fieldset {
     .main-convert {
         margin: 10vh 5vw;
     }
-
+    
     .option-container {
+        gap: 5%;
+        justify-content: center;
         grid-template-columns: auto auto;
+    }
+    
+    .svg_resposive {
+        width: 80px;
     }
 }
 
@@ -454,6 +468,6 @@ fieldset {
 @media (hover: hover) and (pointer: fine) {
     .brutalist-button:hover {
         transform: translate(-4px, -4px);
-        box-shadow: 8px 8px 0px #000000;
+        box-shadow: 8px 8px 0px #105d9d;
     }
 }
