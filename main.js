@@ -42,7 +42,7 @@ faqs.forEach((faq) => {
 });
 
 const statusMsg = document.getElementById("status-msg");
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyO38yYFqosEMluimn6XmsUKLc0VQfef1OHNbbDtOgqQEoJ47_B5Gssig2ClGOBTgaG/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxR0DSr3mrgkJil5nZeki-PN3LCD2tOHnOqkHXGoi7Wsf02_HKuuhFv7gr6mYvB1yfrYA/exec'
 const formexcel = document.forms['Form-contact-converter'];
 const buttonSubmit = document.getElementById("button-submit");
 
