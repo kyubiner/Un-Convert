@@ -114,6 +114,7 @@ function updateUnitOptions(category) {
 const regex_biner= /^[01]+$/;
 const regex = /^[0-9]+$/;
 const regex_hex = /^[0-9a-zA-Z]+$/;
+const regex_octal = /^[0-7]+$/;
 
 buttonConvert.addEventListener("click", (e) => {
     e.preventDefault();
@@ -125,11 +126,17 @@ buttonConvert.addEventListener("click", (e) => {
         return;
     }
     if(from !== "text" && from !== "hexadecimal" && !regex.test(value)) {
-        alert("invalid value!");
+        alert("value must number!");
         return;
     }
+
+    if(from === "octal" && !regex_octal.test(value)) {
+        alert("value must 0 - 7");
+        return;
+    }
+
     if(from === "hexadecimal" && !regex_hex.test(value)) {
-        alert("invalid value!");
+        alert("value must hex code!");
         return;
     }
     const result = activeConverter.convert(value, from, to);
