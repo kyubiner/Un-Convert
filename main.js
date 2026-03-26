@@ -91,7 +91,6 @@ formexcel.addEventListener('submit', e => {
 
     fetch(scriptURL, {
         method: 'POST',
-        mode: 'no-cors',
         body: new FormData(formexcel)
     })
         .then(() => {
