@@ -1,4 +1,4 @@
-const buttons = document.getElementsByTagName("button")
+const buttons = document.querySelectorAll(".change_url")
 
 for (const button of buttons) {
     button.addEventListener("click", (e) => {
@@ -42,7 +42,7 @@ faqs.forEach((faq) => {
 });
 
 const statusMsg = document.getElementById("status-msg");
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxR0DSr3mrgkJil5nZeki-PN3LCD2tOHnOqkHXGoi7Wsf02_HKuuhFv7gr6mYvB1yfrYA/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzbpfYRwvIAHyG42YnK8QnorR85iwiVFJJn20Ndsj8XGYYuB-KW5dh6N4e-ZsDZBJOaHA/exec'
 const formexcel = document.forms['Form-contact-converter'];
 const buttonSubmit = document.getElementById("button-submit");
 
