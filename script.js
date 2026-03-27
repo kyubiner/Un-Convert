@@ -76,7 +76,7 @@ function validateForm() {
         }, 5000)
         return false;
     }
-    return true
+    return true;
 }
 
 formexcel.addEventListener('submit', e => {
@@ -91,6 +91,7 @@ formexcel.addEventListener('submit', e => {
 
     fetch(scriptURL, {
         method: 'POST',
+        mode: 'no-cors',
         body: new FormData(formexcel)
     })
         .then((response) => {
@@ -108,7 +109,7 @@ formexcel.addEventListener('submit', e => {
             buttonSubmit.disabled = false;
             setTimeout(() => {
                 statusMsg.style.display = "none";
-                // formexcel.reset();
+                formexcel.reset();
             }, 5000);
         })
 })
