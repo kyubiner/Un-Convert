@@ -43,7 +43,7 @@ const mass = new unitConverter({
         { id: 1, label: "kilogram", factor: 1000 },
         { id: 2, label: "hektogram", factor: 100 },
         { id: 3, label: "dekagram", factor: 10 },
-        { id: 4, label: "meter", factor: 1 },
+        { id: 4, label: "gram", factor: 1 },
         { id: 5, label: "desigram", factor: 0.1 },
         { id: 6, label: "centigram", factor: 0.01 },
         { id: 7, label: "miligram", factor: 0.001 },
@@ -174,44 +174,3 @@ buttonConvert.addEventListener("click", (e) => {
         <svg fill="#00ccff" width="20px" height="20px" viewBox="0 0 32.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="list-1" enable-background="new 0 0 32 32" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect x="9" y="14" width="2" height="2"></rect> <rect x="13" y="18" width="10" height="2"></rect> <rect x="9" y="18" width="2" height="2"></rect> <rect x="13" y="22" width="10" height="2"></rect> <rect x="9" y="22" width="2" height="2"></rect> <rect x="13" y="14" width="10" height="2"></rect> <path d="M23 6V4h-6V2h-2v2H9v2H4v24h24V6H23zM11 6h10v2H11V6zM26 28H6V8h3v2h14V8h3V28z"></path> </g></svg>
     </button>`);
 });
-
-
-// const bubble = document.querySelector(".chat-bubble");
-// const maskot = document.querySelector(".assistant-img");
-// const textBubble = [
-//     "Hello need help converting?👾",
-//     "Enter the number & select the unit. then click Convert!",
-//     "[SYSTEM ONLINE] Data conversion ready!✅",
-//     "Want to know more? Check out the <span>Help page!</span>",
-//     "⚙️ Processing... conversions in seconds!",
-//     "Unit conversion with explanation of the formula in it!🚀",
-// ]
-
-// let hideTimeout;
-// let lastTextIndex = -1;
-
-// maskot.addEventListener("click", () => {
-//     bubble.classList.remove("show");
-
-//     setTimeout(() => {
-//         let newIndex;
-//         do {
-//             newIndex = Math.floor(Math.random() * textBubble.length);
-//         } while (newIndex === lastTextIndex);
-//         lastTextIndex = newIndex;
-//         bubble.innerHTML = textBubble[newIndex];
-
-//         if (bubble.textContent.includes("Help page!")) {
-//             bubble.addEventListener("click", () => {
-//                 window.location.href = "../help/index.html";
-//             });
-//         }
-
-//         bubble.classList.add("show");
-//         clearTimeout(hideTimeout);
-
-//         hideTimeout = setTimeout(() => {
-//             bubble.classList.remove("show");
-//         }, 5000);
-//     }, 300);
-// });
